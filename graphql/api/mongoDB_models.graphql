@@ -1,0 +1,37 @@
+type NoticeBoard {
+ _id: ID!
+ type: String!
+ title: String!
+ description: String!
+ #  author: [User!]!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+}
+
+type User {
+ _id: ID!
+ email: String!
+ nickName: String!
+ myBoard: [NoticeBoard!]!
+ isDelete: Boolean!
+ deletedAt: String!
+}
+
+type NoticeFiles {
+ _id: ID!
+ originName: String!
+ fileURL: String!
+}
+
+type PopularGallery {
+ _id: ID!
+ title: ID!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ imgPath: String!
+}

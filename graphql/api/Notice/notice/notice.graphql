@@ -1,0 +1,7 @@
+type Query {
+ getAllNotice: [NoticeBoard!]!
+}
+
+# type Mutation {
+#     createNotice(): Boolean!
+# }
