@@ -1,0 +1,7 @@
+type Query {
+ getAllGame(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [SoprtsBoard!]!
+}

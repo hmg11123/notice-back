@@ -1,0 +1,10 @@
+type Mutation {
+ createUser(
+  email: String!
+  nickName: String!
+  name: String!
+  passWord: String!
+  isDelete: Boolean!
+  deletedAt: String!
+ ): Boolean!
+}

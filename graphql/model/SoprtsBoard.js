@@ -1,36 +1,33 @@
 import mongoose from "mongoose";
-
 const Schema = mongoose.Schema;
 
-const User = new Schema(
+const SoprtsBoard = new Schema(
  {
-  email: {
+  title: {
    type: String,
    required: true,
   },
-  nickName: {
+  description: {
    type: String,
    required: true,
   },
-  name: {
+  createdAt: {
    type: String,
    required: true,
   },
-  passWord: {
-   type: String,
-   required: true,
-  },
-  myBoard: [
-   {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: "NoticeBoard",
-   },
-  ],
   isDelete: {
    type: Boolean,
    required: true,
   },
   deletedAt: {
+   type: String,
+   required: true,
+  },
+  hit: {
+   type: Number,
+   required: true,
+  },
+  imgPath: {
    type: String,
    required: true,
   },
@@ -40,4 +37,4 @@ const User = new Schema(
  }
 );
 
-export default mongoose.model(`User`, User, `User`);
+export default mongoose.model(`SoprtsBoard`, SoprtsBoard, `SoprtsBoard`);

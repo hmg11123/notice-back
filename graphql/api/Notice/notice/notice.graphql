@@ -1,5 +1,9 @@
 type Query {
- getAllNotice: [NoticeBoard!]!
+ getAllNotice(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [NoticeBoard!]!
 }
 
 # type Mutation {

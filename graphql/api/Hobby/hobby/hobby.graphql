@@ -1,0 +1,7 @@
+type Query {
+ getAllHobby(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [SoprtsBoard!]!
+}

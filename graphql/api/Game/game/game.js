@@ -1,17 +1,16 @@
-import Notice from "../../../model/NoticeBoard";
+import GameBoard from "../../../model/GameBoard";
 
 export default {
  Query: {
-  getAllNotice: async (_, args) => {
+  getAllGame: async (_, args) => {
    const { searchValue, limit, currentPage } = args;
    try {
-    const result = await Notice.find({}, {})
+    const result = await GameBoard.find({}, {})
      .sort({
       createdAt: -1,
      })
      .limit(limit)
      .skip(currentPage * limit);
-
     return result;
    } catch (e) {
     console.log(e);

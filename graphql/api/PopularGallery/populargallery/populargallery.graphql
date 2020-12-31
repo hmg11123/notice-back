@@ -1,3 +1,8 @@
 type Query {
- getAllPopularGallery: [PopularGallery!]!
+ getAllPopularGallery(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [PopularGallery!]!
+ getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
 }

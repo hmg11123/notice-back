@@ -1,11 +1,11 @@
-import Notice from "../../../model/NoticeBoard";
+import Hobby from "../../../model/HobbyBoard";
 
 export default {
  Query: {
-  getAllNotice: async (_, args) => {
+  getAllHobby: async (_, args) => {
    const { searchValue, limit, currentPage } = args;
    try {
-    const result = await Notice.find({}, {})
+    const result = await Hobby.find({}, {})
      .sort({
       createdAt: -1,
      })

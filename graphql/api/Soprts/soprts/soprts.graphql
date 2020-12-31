@@ -1,0 +1,7 @@
+type Query {
+ getAllSoprts(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [SoprtsBoard!]!
+}

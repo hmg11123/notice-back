@@ -14,6 +14,8 @@ type User {
  _id: ID!
  email: String!
  nickName: String!
+ name: String!
+ passWord: String!
  myBoard: [NoticeBoard!]!
  isDelete: Boolean!
  deletedAt: String!
@@ -27,7 +29,40 @@ type NoticeFiles {
 
 type PopularGallery {
  _id: ID!
- title: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ imgPath: String!
+}
+
+type SoprtsBoard {
+ _id: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ imgPath: String!
+}
+
+type HobbyBoard {
+ _id: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ imgPath: String!
+}
+
+type GameBoard {
+ _id: ID!
+ title: String!
  description: String!
  createdAt: String!
  isDelete: Boolean!
