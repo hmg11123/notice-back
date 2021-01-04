@@ -24,6 +24,10 @@ const PopularGallery = new Schema(
    type: String,
    required: true,
   },
+  author: {
+   type: String,
+   required: true,
+  },
   hit: {
    type: Number,
    required: true,

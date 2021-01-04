@@ -37,6 +37,7 @@ type PopularGallery {
  deletedAt: String!
  hit: Int!
  imgPath: String!
+ author: String!
 }
 
 type SoprtsBoard {
