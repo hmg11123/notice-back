@@ -3,8 +3,13 @@ type Mutation {
   email: String!
   nickName: String!
   name: String!
-  passWord: String!
+  mobile: String!
   isDelete: Boolean!
   deletedAt: String!
  ): Boolean!
+ tryLogin(email: String!): Boolean!
+}
+type Query {
+ checkCode(email: String!): User!
+ getUser(email: String!): User!
 }

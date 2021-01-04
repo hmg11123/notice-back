@@ -15,7 +15,8 @@ type User {
  email: String!
  nickName: String!
  name: String!
- passWord: String!
+ mobile: String!
+ secretCode: String!
  myBoard: [NoticeBoard!]!
  isDelete: Boolean!
  deletedAt: String!

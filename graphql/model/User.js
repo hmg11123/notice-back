@@ -16,9 +16,14 @@ const User = new Schema(
    type: String,
    required: true,
   },
-  passWord: {
+  mobile: {
    type: String,
    required: true,
+  },
+  secretCode: {
+   type: String,
+   required: true,
+   default: "-",
   },
   myBoard: [
    {
