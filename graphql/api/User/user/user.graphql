@@ -8,8 +8,6 @@ type Mutation {
   deletedAt: String!
  ): Boolean!
  tryLogin(email: String!): Boolean!
-}
-type Query {
+ getUser(email: String!, secretCode: String!): User!
  checkCode(email: String!): User!
- getUser(email: String!): User!
 }

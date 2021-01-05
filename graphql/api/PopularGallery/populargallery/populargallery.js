@@ -39,5 +39,36 @@ export default {
     return 0;
    }
   },
+  getPopularGallery: async (_, args) => {
+   const { id } = args;
+   try {
+    const result = await PopularGallery.findOne({ _id: id });
+
+    return result;
+   } catch (e) {
+    console.log(e);
+    return {};
+   }
+  },
+ },
+
+ Mutation: {
+  createPopularGallery: async (_, args) => {
+   const { title, author, descrption, imgPath } = args;
+
+   try {
+    const result = await PopularGallery.create({
+     title,
+     author,
+     description,
+     imgPath,
+    });
+
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
  },
 };

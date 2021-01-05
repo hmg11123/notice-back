@@ -88,19 +88,17 @@ export default {
     return false;
    }
   },
- },
- Query: {
-  checkCode: async (_, args) => {
-   const { email } = args;
+  getUser: async (_, args) => {
+   const { email, secretCode } = args;
    try {
-    const result = await User.findOne({ email });
+    const result = await User.findOne({ email, secretCode });
     return result;
    } catch (e) {
     console.log(e);
     return {};
    }
   },
-  getUser: async (_, args) => {
+  checkCode: async (_, args) => {
    const { email } = args;
    try {
     const result = await User.findOne({ email });

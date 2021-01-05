@@ -5,4 +5,14 @@ type Query {
   currentPage: Int
  ): [PopularGallery!]!
  getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
+ getPopularGallery(id: String!): PopularGallery!
+}
+
+type Mutation {
+ createPopularGallery(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
 }
