@@ -1,7 +1,27 @@
 import PopularGallery from "../../../model/PopularGallery";
+import { CURRENT_TIME } from "../../../../utils/commonUtils";
 
 export default {
  Query: {
+  getAllPopularGallerylength: async (_, args) => {
+   const { searchValue } = args;
+   try {
+    const result = await PopularGallery.find({
+     $or: [
+      { title: { $regex: `.*${searchValue}.*` } },
+      { description: { $regex: `.*${searchValue}.*` } },
+     ],
+    });
+
+    const cnt = result.length;
+
+    return parseInt(cnt);
+   } catch (e) {
+    console.log(e);
+    return [];
+   }
+  },
+
   getAllPopularGallery: async (_, args) => {
    const { searchValue, limit, currentPage } = args;
    try {
@@ -54,15 +74,44 @@ export default {
 
  Mutation: {
   createPopularGallery: async (_, args) => {
-   const { title, author, descrption, imgPath } = args;
-
+   const { title, author, description, imgPath } = args;
+   const current = await CURRENT_TIME();
    try {
     const result = await PopularGallery.create({
      title,
      author,
      description,
+     createdAt: current,
      imgPath,
+     hit: 0,
+     isDelete: false,
+     deletedAt: `none`,
     });
+
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+
+  deletePopularGallery: async (_, args) => {
+   const { id } = args;
+   try {
+    const result = await PopularGallery.deleteOne({ _id: id });
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+  updatePopularGallery: async (_, args) => {
+   const { id } = args;
+   try {
+    const result = await PopularGallery.updateOne(
+     { _id: id },
+     { $set: { title, description, imgPath } }
+    );
 
     return true;
    } catch (e) {

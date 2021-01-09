@@ -35,6 +35,7 @@ const PopularGallery = new Schema(
   imgPath: {
    type: String,
    required: true,
+   default: "-",
   },
  },
  {

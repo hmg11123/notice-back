@@ -6,6 +6,7 @@ type Query {
  ): [PopularGallery!]!
  getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
  getPopularGallery(id: String!): PopularGallery!
+ getAllPopularGallerylength(searchValue: String!): Int!
 }
 
 type Mutation {
@@ -15,4 +16,6 @@ type Mutation {
   description: String!
   imgPath: String
  ): Boolean!
+ deletePopularGallery(id: String!): Boolean!
+ updatePopularGallery(id: String!): Boolean!
 }
