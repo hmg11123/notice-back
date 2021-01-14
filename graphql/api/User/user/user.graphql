@@ -7,7 +7,19 @@ type Mutation {
   isDelete: Boolean!
   deletedAt: String!
  ): Boolean!
+ updateUser(
+  id: String!
+  email: String!
+  name: String!
+  nickName: String!
+  mobile: String!
+ ): Boolean!
  tryLogin(email: String!): Boolean!
  getUser(email: String!, secretCode: String!): User!
  checkCode(email: String!): User!
+ pushBoard(email: String!): Boolean!
+}
+
+type Query {
+ viewUser(email: String!): User!
 }

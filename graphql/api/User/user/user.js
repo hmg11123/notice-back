@@ -108,5 +108,38 @@ export default {
     return {};
    }
   },
+  updateUser: async (_, args) => {
+   const { id, email, name, nickName, mobile } = args;
+   try {
+    const result = await User.updateOne(
+     { _id: id },
+     {
+      $set: {
+       email,
+       name,
+       nickName,
+       mobile,
+      },
+     }
+    );
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+ },
+ Query: {
+  viewUser: async (_, args) => {
+   const { email } = args;
+   try {
+    const result = await User.findOne({ email });
+
+    return result;
+   } catch (e) {
+    console.log(e);
+    return {};
+   }
+  },
  },
 };
