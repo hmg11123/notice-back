@@ -56,6 +56,7 @@ type Gallery {
 }
 
 type SoprtsBoard {
+ type: String!
  _id: ID!
  title: String!
  description: String!
@@ -63,7 +64,10 @@ type SoprtsBoard {
  isDelete: Boolean!
  deletedAt: String!
  hit: Int!
+ recommendation: Int!
  imgPath: String!
+ author: String!
+ recomUser: [String!]!
 }
 
 type HobbyBoard {
