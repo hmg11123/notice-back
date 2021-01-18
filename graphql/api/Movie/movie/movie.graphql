@@ -1,0 +1,26 @@
+type Query {
+ getAllMovie(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [MovieBoard!]!
+ getMovieTotalPage(searchValue: String!, limit: Int!): Int!
+ getMovieBoard(id: String!): Gallery!
+ getAllMovielength(searchValue: String!): Int!
+}
+
+type Mutation {
+ createMovieBoard(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deleteMovieBaord(id: String!): Boolean!
+ updateMovieBaord(id: String!): Boolean!
+ recommendationUp(
+  id: String!
+  recomUser: String!
+  recommendation: Int!
+ ): Boolean!
+}

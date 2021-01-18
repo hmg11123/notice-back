@@ -1,12 +1,12 @@
-import SoprtsBoard from "../../../model/SoprtsBoard";
+import Gallery from "../../../model/Gallery";
 import { CURRENT_TIME } from "../../../../utils/commonUtils";
 
 export default {
  Query: {
-  getAllSoprtslength: async (_, args) => {
+  getAllGallerylength: async (_, args) => {
    const { searchValue } = args;
    try {
-    const result = await SoprtsBoard.find({
+    const result = await Gallery.find({
      $or: [
       { title: { $regex: `.*${searchValue}.*` } },
       { description: { $regex: `.*${searchValue}.*` } },
@@ -22,10 +22,10 @@ export default {
    }
   },
 
-  getAllSoprts: async (_, args) => {
+  getAllGallery: async (_, args) => {
    const { searchValue, limit, currentPage } = args;
    try {
-    const result = await SoprtsBoard.find({}, {})
+    const result = await Gallery.find({}, {})
      .sort({
       createdAt: -1,
      })
@@ -39,11 +39,11 @@ export default {
    }
   },
 
-  getSoprtsTotalPage: async (_, args) => {
+  getGalleryTotalPage: async (_, args) => {
    const { searchValue, limit } = args;
 
    try {
-    const result = await SoprtsBoard.find({
+    const result = await Gallery.find({
      title: { $regex: `.*${searchValue}.*` },
     }).sort({
      createdAt: -1,
@@ -59,10 +59,10 @@ export default {
     return 0;
    }
   },
-  getSoprts: async (_, args) => {
+  getGallery: async (_, args) => {
    const { id } = args;
    try {
-    const result = await SoprtsBoard.findOne({ _id: id });
+    const result = await Gallery.findOne({ _id: id });
 
     return result;
    } catch (e) {
@@ -73,11 +73,11 @@ export default {
  },
 
  Mutation: {
-  createSoprts: async (_, args) => {
+  createGallery: async (_, args) => {
    const { title, author, description, imgPath, type } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await SoprtsBoard.create({
+    const result = await Gallery.create({
      type: "Gall",
      title,
      author,
@@ -97,11 +97,11 @@ export default {
    }
   },
 
-  deleteSoprts: async (_, args) => {
+  deleteGallery: async (_, args) => {
    const { id } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await SoprtsBoard.updateOne(
+    const result = await Gallery.updateOne(
      { _id: id },
      {
       $set: { isDelete: true, deletedAt: current },
@@ -113,10 +113,10 @@ export default {
     return false;
    }
   },
-  updateSoprts: async (_, args) => {
+  updateGallery: async (_, args) => {
    const { id } = args;
    try {
-    const result = await SoprtsBoard.updateOne(
+    const result = await Gallery.updateOne(
      { _id: id },
      { $set: { title, description, imgPath } }
     );
@@ -127,10 +127,10 @@ export default {
     return false;
    }
   },
-  soprtsRecomUp: async (_, args) => {
+  galleryRecomUp: async (_, args) => {
    const { id, recommendation, recomUser } = args;
    try {
-    const result = await SoprtsBoard.updateOne(
+    const result = await Gallery.updateOne(
      { _id: id },
      { $set: { recommendation }, $addToSet: { recomUser } }
     );

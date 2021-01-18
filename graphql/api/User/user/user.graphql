@@ -1,5 +1,6 @@
 type Mutation {
  createUser(
+  type: String!
   email: String!
   nickName: String!
   name: String!
@@ -18,8 +19,11 @@ type Mutation {
  getUser(email: String!, secretCode: String!): User!
  checkCode(email: String!): User!
  pushBoard(email: String!): Boolean!
+ deleteUser(id: String!): Boolean!
+ getAllUser: [User!]!
 }
 
 type Query {
  viewUser(email: String!): User!
+ userLength: Int!
 }

@@ -1,13 +1,15 @@
 import User from "../../../model/User";
 import nodemailer from "nodemailer";
 import smtpPool from "nodemailer-smtp-pool";
+import { CURRENT_TIME } from "../../../../utils/commonUtils";
 
 export default {
  Mutation: {
   createUser: async (_, args) => {
-   const { email, nickName, name, mobile, isDelete, deletedAt } = args;
+   const { type, email, nickName, name, mobile, isDelete, deletedAt } = args;
    try {
     const result = await User.create({
+     type,
      email,
      nickName,
      name,
@@ -128,6 +130,34 @@ export default {
     return false;
    }
   },
+  deleteUser: async (_, args) => {
+   const { id } = args;
+   const current = await CURRENT_TIME();
+   try {
+    const result = await User.updateOne(
+     { _id: id },
+     {
+      $set: {
+       isDelete: true,
+       deletedAt: current,
+      },
+     }
+    );
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+  getAllUser: async (_, args) => {
+   try {
+    const result = await User.find();
+    return result;
+   } catch (e) {
+    console.log(e);
+    return [];
+   }
+  },
  },
  Query: {
   viewUser: async (_, args) => {
@@ -136,6 +166,18 @@ export default {
     const result = await User.findOne({ email });
 
     return result;
+   } catch (e) {
+    console.log(e);
+    return {};
+   }
+  },
+  userLength: async (_, args) => {
+   try {
+    const result = await User.find();
+
+    const cnt = result.length;
+
+    return parseInt(cnt);
    } catch (e) {
     console.log(e);
     return {};

@@ -2,20 +2,25 @@ type Query {
  getAllPopularGallery(
   searchValue: String!
   limit: Int!
-  currentPage: Int
- ): [PopularGallery!]!
- getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
- getPopularGallery(id: String!): PopularGallery!
- getAllPopularGallerylength(searchValue: String!): Int!
+  currentPage: Int!
+ ): [Gallery!]!
+ getAllRecomPopGall(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int!
+ ): [Gallery!]!
+ #  getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
+ #  getPopularGallery(id: String!): PopularGallery!
+ #  getAllPopularGallerylength(searchValue: String!): Int!
 }
 
-type Mutation {
- createPopularGallery(
-  title: String!
-  author: String!
-  description: String!
-  imgPath: String
- ): Boolean!
- deletePopularGallery(id: String!): Boolean!
- updatePopularGallery(id: String!): Boolean!
-}
+# type Mutation {
+#  createPopularGallery(
+#   title: String!
+#   author: String!
+#   description: String!
+#   imgPath: String
+#  ): Boolean!
+#  deletePopularGallery(id: String!): Boolean!
+#  updatePopularGallery(id: String!): Boolean!
+# }

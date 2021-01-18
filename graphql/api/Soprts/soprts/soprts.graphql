@@ -4,4 +4,19 @@ type Query {
   limit: Int!
   currentPage: Int
  ): [SoprtsBoard!]!
+ getSoprtsTotalPage(searchValue: String!, limit: Int!): Int!
+ getSoprts(id: String!): SoprtsBoard!
+ getAllSoprtslength(searchValue: String!): Int!
+}
+
+type Mutation {
+ createSoprts(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deleteSoprts(id: String!): Boolean!
+ updateSoprts(id: String!): Boolean!
+ soprtsRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
 }

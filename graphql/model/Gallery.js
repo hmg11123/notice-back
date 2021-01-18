@@ -2,8 +2,12 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const PopularGallery = new Schema(
+const Gallery = new Schema(
  {
+  type: {
+   type: String,
+   required: true,
+  },
   title: {
    type: String,
    required: true,
@@ -32,6 +36,16 @@ const PopularGallery = new Schema(
    type: Number,
    required: true,
   },
+  recommendation: {
+   type: Number,
+   required: true,
+  },
+  recomUser: [
+   {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+   },
+  ],
   imgPath: {
    type: String,
    required: true,
@@ -43,8 +57,4 @@ const PopularGallery = new Schema(
  }
 );
 
-export default mongoose.model(
- `PopularGallery`,
- PopularGallery,
- `PopularGallery`
-);
+export default mongoose.model(`Gallery`, Gallery, `Gallery`);

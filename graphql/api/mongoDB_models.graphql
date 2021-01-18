@@ -40,6 +40,21 @@ type PopularGallery {
  author: String!
 }
 
+type Gallery {
+ type: String!
+ _id: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ recommendation: Int!
+ imgPath: String!
+ author: String!
+ recomUser: [String!]!
+}
+
 type SoprtsBoard {
  _id: ID!
  title: String!
@@ -71,4 +86,21 @@ type GameBoard {
  deletedAt: String!
  hit: Int!
  imgPath: String!
+ recommendation: Int!
+ author: String!
+}
+
+type MovieBoard {
+ type: String!
+ _id: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ recommendation: Int!
+ imgPath: String!
+ author: String!
+ recomUser: [String!]!
 }

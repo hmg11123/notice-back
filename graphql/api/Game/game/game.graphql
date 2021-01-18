@@ -1,7 +1,17 @@
 type Query {
- getAllGame(
-  searchValue: String!
-  limit: Int!
-  currentPage: Int
- ): [SoprtsBoard!]!
+ getAllGame(searchValue: String!, limit: Int!, currentPage: Int): [GameBoard!]!
+ getGameTotalPage(searchValue: String!, limit: Int!): Int!
+ getGameBoard(id: String!): Gallery!
+ getAllGamelength(searchValue: String!): Int!
+}
+
+type Mutation {
+ createGameBoard(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deleteGameBaord(id: String!): Boolean!
+ updateGameBaord(id: String!): Boolean!
 }

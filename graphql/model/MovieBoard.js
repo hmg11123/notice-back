@@ -2,8 +2,12 @@ import mongoose from "mongoose";
 
 const Schema = mongoose.Schema;
 
-const GameBoard = new Schema(
+const MovieBoard = new Schema(
  {
+  type: {
+   type: String,
+   required: true,
+  },
   title: {
    type: String,
    required: true,
@@ -24,24 +28,33 @@ const GameBoard = new Schema(
    type: String,
    required: true,
   },
-  hit: {
-   type: Number,
-   required: true,
-  },
-  imgPath: {
-   type: String,
-   required: true,
-  },
   author: {
    type: String,
+   required: true,
+  },
+  hit: {
+   type: Number,
    required: true,
   },
   recommendation: {
    type: Number,
    required: true,
   },
+  recomUser: [
+   {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+   },
+  ],
+  imgPath: {
+   type: String,
+   required: true,
+   default: "-",
+  },
  },
- { versionKey: false }
+ {
+  versionKey: false,
+ }
 );
 
-export default mongoose.model(`GameBoard`, GameBoard, `GameBoard`);
+export default mongoose.model(`MovieBoard`, MovieBoard, `MovieBoard`);
