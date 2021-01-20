@@ -1,12 +1,12 @@
-import MovieBoard from "../../../model/MovieBoard";
+import PhotoBoard from "../../../model/PhotoBoard";
 import { CURRENT_TIME } from "../../../../utils/commonUtils";
 
 export default {
  Query: {
-  getAllMovielength: async (_, args) => {
+  getAllPhotolength: async (_, args) => {
    const { searchValue } = args;
    try {
-    const result = await MovieBoard.find({
+    const result = await PhotoBoard.find({
      $or: [
       { title: { $regex: `.*${searchValue}.*` } },
       { description: { $regex: `.*${searchValue}.*` } },
@@ -21,15 +21,17 @@ export default {
     return [];
    }
   },
-  getAllMovie: async (_, args) => {
+
+  getAllPhoto: async (_, args) => {
    const { searchValue, limit, currentPage } = args;
    try {
-    const result = await MovieBoard.find({}, {})
+    const result = await PhotoBoard.find({}, {})
      .sort({
       createdAt: -1,
      })
      .limit(limit)
      .skip(currentPage * limit);
+
     return result;
    } catch (e) {
     console.log(e);
@@ -37,11 +39,11 @@ export default {
    }
   },
 
-  getMovieTotalPage: async (_, args) => {
+  getPhotoTotalPage: async (_, args) => {
    const { searchValue, limit } = args;
 
    try {
-    const result = await MovieBoard.find({
+    const result = await PhotoBoard.find({
      title: { $regex: `.*${searchValue}.*` },
     }).sort({
      createdAt: -1,
@@ -57,10 +59,10 @@ export default {
     return 0;
    }
   },
-  getMovieBoard: async (_, args) => {
+  getPhoto: async (_, args) => {
    const { id } = args;
    try {
-    const result = await MovieBoard.findOne({ _id: id });
+    const result = await PhotoBoard.findOne({ _id: id });
 
     return result;
    } catch (e) {
@@ -71,12 +73,12 @@ export default {
  },
 
  Mutation: {
-  createMovieBoard: async (_, args) => {
+  createPhoto: async (_, args) => {
    const { title, author, description, imgPath, type } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await MovieBoard.create({
-     type: "Movie",
+    const result = await PhotoBoard.create({
+     type: "Photo",
      title,
      author,
      description,
@@ -95,11 +97,11 @@ export default {
    }
   },
 
-  deleteMovieBaord: async (_, args) => {
+  deletePhoto: async (_, args) => {
    const { id } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await MovieBoard.deleteOne(
+    const result = await PhotoBoard.deleteOne(
      { _id: id },
      {
       $set: { isDelete: true, deletedAt: current },
@@ -111,10 +113,10 @@ export default {
     return false;
    }
   },
-  updateMovieBaord: async (_, args) => {
+  updatePhoto: async (_, args) => {
    const { id, title, description, imgPath } = args;
    try {
-    const result = await MovieBoard.updateOne(
+    const result = await PhotoBoard.updateOne(
      { _id: id },
      { $set: { title, description, imgPath } }
     );
@@ -125,12 +127,12 @@ export default {
     return false;
    }
   },
-  recommendationUp: async (_, args) => {
+  photoRecomUp: async (_, args) => {
    const { id, recommendation, recomUser } = args;
    try {
-    const result = await MovieBoard.updateOne(
+    const result = await PhotoBoard.updateOne(
      { _id: id },
-     { $set: { recommendation }, $push: { recomUser } }
+     { $set: { recommendation }, $addToSet: { recomUser } }
     );
 
     return true;

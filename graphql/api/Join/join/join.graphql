@@ -1,0 +1,23 @@
+type Query {
+ getAllJoin(searchValue: String!, limit: Int!, currentPage: Int): [JoinBoard!]!
+ getJoinTotalPage(searchValue: String!, limit: Int!): Int!
+ getJoin(id: String!): JoinBoard!
+ getAllJoinlength(searchValue: String!): Int!
+}
+
+type Mutation {
+ createJoin(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deleteJoin(id: String!): Boolean!
+ updateJoin(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
+ joinRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
+}

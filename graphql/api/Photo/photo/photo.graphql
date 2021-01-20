@@ -1,0 +1,27 @@
+type Query {
+ getAllPhoto(
+  searchValue: String!
+  limit: Int!
+  currentPage: Int
+ ): [PhotoBoard!]!
+ getPhotoTotalPage(searchValue: String!, limit: Int!): Int!
+ getPhoto(id: String!): PhotoBoard!
+ getAllPhotolength(searchValue: String!): Int!
+}
+
+type Mutation {
+ createPhoto(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deletePhoto(id: String!): Boolean!
+ updatePhoto(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
+ photoRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
+}

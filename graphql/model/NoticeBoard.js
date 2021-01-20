@@ -8,6 +8,10 @@ const NoticeBoard = new Schema(
    type: String,
    required: true,
   },
+  detailType: {
+   type: String,
+   required: true,
+  },
   title: {
    type: String,
    required: true,
@@ -16,12 +20,6 @@ const NoticeBoard = new Schema(
    type: String,
    required: true,
   },
-  //   author: [
-  //    {
-  //     type: mongoose.Schema.Types.ObjectId,
-  //     ref: "author",
-  //    },
-  //   ],
   createdAt: {
    type: String,
    required: true,
@@ -29,11 +27,33 @@ const NoticeBoard = new Schema(
   isDelete: {
    type: Boolean,
    required: true,
-   default: false,
   },
   deletedAt: {
    type: String,
    required: true,
+  },
+  author: {
+   type: String,
+   required: true,
+  },
+  hit: {
+   type: Number,
+   required: true,
+  },
+  recommendation: {
+   type: Number,
+   required: true,
+  },
+  recomUser: [
+   {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+   },
+  ],
+  imgPath: {
+   type: String,
+   required: true,
+   default: "-",
   },
  },
  {

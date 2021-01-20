@@ -13,6 +13,12 @@ type Mutation {
   imgPath: String
  ): Boolean!
  deleteGallery(id: String!): Boolean!
- updateGallery(id: String!): Boolean!
+ updateGallery(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
  galleryRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
+ galleryHitUp(id: String!, hit: Int!): Boolean!
 }

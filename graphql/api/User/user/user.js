@@ -134,7 +134,7 @@ export default {
    const { id } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await User.updateOne(
+    const result = await User.deleteOne(
      { _id: id },
      {
       $set: {

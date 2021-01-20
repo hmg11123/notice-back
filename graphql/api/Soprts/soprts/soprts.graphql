@@ -17,6 +17,11 @@ type Mutation {
   imgPath: String
  ): Boolean!
  deleteSoprts(id: String!): Boolean!
- updateSoprts(id: String!): Boolean!
+ updateSoprts(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
  soprtsRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
 }

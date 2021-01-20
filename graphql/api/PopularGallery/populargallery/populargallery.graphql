@@ -9,9 +9,9 @@ type Query {
   limit: Int!
   currentPage: Int!
  ): [Gallery!]!
- #  getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
+ getPopularGalleryTotalPage(searchValue: String!, limit: Int!): Int!
  #  getPopularGallery(id: String!): PopularGallery!
- #  getAllPopularGallerylength(searchValue: String!): Int!
+ getAllPopularGallerylength(searchValue: String!): Int!
 }
 
 # type Mutation {

@@ -3,24 +3,25 @@ import { CURRENT_TIME } from "../../../../utils/commonUtils";
 
 export default {
  Query: {
-  //   getAllGallerylength: async (_, args) => {
-  //    const { searchValue } = args;
-  //    try {
-  //     const result = await Gallery.find({
-  //      $or: [
-  //       { title: { $regex: `.*${searchValue}.*` } },
-  //       { description: { $regex: `.*${searchValue}.*` } },
-  //      ],
-  //     });
+  getAllPopularGallerylength: async (_, args) => {
+   const { searchValue } = args;
+   try {
+    const result = await Gallery.find({
+     recommendation: { $gt: 49 },
+     $or: [
+      { title: { $regex: `.*${searchValue}.*` } },
+      { description: { $regex: `.*${searchValue}.*` } },
+     ],
+    });
 
-  //     const cnt = result.length;
+    const cnt = result.length;
 
-  //     return parseInt(cnt);
-  //    } catch (e) {
-  //     console.log(e);
-  //     return [];
-  //    }
-  //   },
+    return parseInt(cnt);
+   } catch (e) {
+    console.log(e);
+    return [];
+   }
+  },
 
   getAllPopularGallery: async (_, args) => {
    const { searchValue, limit, currentPage } = args;
@@ -55,85 +56,26 @@ export default {
    }
   },
 
-  //   getGalleryTotalPage: async (_, args) => {
-  //    const { searchValue, limit } = args;
+  getPopularGalleryTotalPage: async (_, args) => {
+   const { searchValue, limit } = args;
 
-  //    try {
-  //     const result = await Gallery.find({
-  //      title: { $regex: `.*${searchValue}.*` },
-  //     }).sort({
-  //      createdAt: -1,
-  //     });
+   try {
+    const result = await Gallery.find({
+     recommendation: { $gt: 49 },
+     title: { $regex: `.*${searchValue}.*` },
+    }).sort({
+     createdAt: -1,
+    });
 
-  //     const cnt = result.length;
+    const cnt = result.length;
 
-  //     const realTotalPage = cnt % limit > 0 ? cnt / limit + 1 : cnt / limit;
+    const realTotalPage = cnt % limit > 0 ? cnt / limit + 1 : cnt / limit;
 
-  //     return parseInt(realTotalPage);
-  //    } catch (e) {
-  //     console.log(e);
-  //     return 0;
-  //    }
-  //   },
-  //   getGallery: async (_, args) => {
-  //    const { id } = args;
-  //    try {
-  //     const result = await Gallery.findOne({ _id: id });
-
-  //     return result;
-  //    } catch (e) {
-  //     console.log(e);
-  //     return {};
-  //    }
-  //   },
+    return parseInt(realTotalPage);
+   } catch (e) {
+    console.log(e);
+    return 0;
+   }
+  },
  },
-
- //  Mutation: {
- //   createGallery: async (_, args) => {
- //    const { title, author, description, imgPath } = args;
- //    const current = await CURRENT_TIME();
- //    try {
- //     const result = await Gallery.create({
- //      title,
- //      author,
- //      description,
- //      createdAt: current,
- //      imgPath,
- //      hit: 0,
- //      isDelete: false,
- //      deletedAt: `none`,
- //     });
-
- //     return true;
- //    } catch (e) {
- //     console.log(e);
- //     return false;
- //    }
- //   },
-
- //   deleteGallery: async (_, args) => {
- //    const { id } = args;
- //    try {
- //     const result = await Gallery.deleteOne({ _id: id });
- //     return true;
- //    } catch (e) {
- //     console.log(e);
- //     return false;
- //    }
- //   },
- //   updateGallery: async (_, args) => {
- //    const { id } = args;
- //    try {
- //     const result = await Gallery.updateOne(
- //      { _id: id },
- //      { $set: { title, description, imgPath } }
- //     );
-
- //     return true;
- //    } catch (e) {
- //     console.log(e);
- //     return false;
- //    }
- //   },
- //  },
 };

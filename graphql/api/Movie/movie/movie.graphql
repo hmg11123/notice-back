@@ -17,7 +17,12 @@ type Mutation {
   imgPath: String
  ): Boolean!
  deleteMovieBaord(id: String!): Boolean!
- updateMovieBaord(id: String!): Boolean!
+ updateMovieBaord(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
  recommendationUp(
   id: String!
   recomUser: String!

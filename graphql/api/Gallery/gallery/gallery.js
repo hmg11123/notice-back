@@ -101,7 +101,7 @@ export default {
    const { id } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await Gallery.updateOne(
+    const result = await Gallery.deleteOne(
      { _id: id },
      {
       $set: { isDelete: true, deletedAt: current },
@@ -114,7 +114,7 @@ export default {
    }
   },
   updateGallery: async (_, args) => {
-   const { id } = args;
+   const { id, title, description, imgPath } = args;
    try {
     const result = await Gallery.updateOne(
      { _id: id },
@@ -135,6 +135,16 @@ export default {
      { $set: { recommendation }, $addToSet: { recomUser } }
     );
 
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+  galleryHitUp: async (_, args) => {
+   const { id, hit } = args;
+   try {
+    const result = await Gallery.updateOne({ _id: id }, { $set: { hit } });
     return true;
    } catch (e) {
     console.log(e);

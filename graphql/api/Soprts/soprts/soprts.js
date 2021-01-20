@@ -78,7 +78,7 @@ export default {
    const current = await CURRENT_TIME();
    try {
     const result = await SoprtsBoard.create({
-     type: "Gall",
+     type: "Soprts",
      title,
      author,
      description,
@@ -101,7 +101,7 @@ export default {
    const { id } = args;
    const current = await CURRENT_TIME();
    try {
-    const result = await SoprtsBoard.updateOne(
+    const result = await SoprtsBoard.deleteOne(
      { _id: id },
      {
       $set: { isDelete: true, deletedAt: current },
@@ -114,7 +114,7 @@ export default {
    }
   },
   updateSoprts: async (_, args) => {
-   const { id } = args;
+   const { id, title, description, imgPath } = args;
    try {
     const result = await SoprtsBoard.updateOne(
      { _id: id },

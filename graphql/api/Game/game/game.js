@@ -111,12 +111,26 @@ export default {
     return false;
    }
   },
-  updateGameBaord: async (_, args) => {
-   const { id } = args;
+  updateGameBoard: async (_, args) => {
+   const { id, title, description, imgPath } = args;
    try {
     const result = await GameBoard.updateOne(
      { _id: id },
      { $set: { title, description, imgPath } }
+    );
+
+    return true;
+   } catch (e) {
+    console.log(e);
+    return false;
+   }
+  },
+  gameRecomUp: async (_, args) => {
+   const { id, recommendation, recomUser } = args;
+   try {
+    const result = await GameBoard.updateOne(
+     { _id: id },
+     { $set: { recommendation }, $addToSet: { recomUser } }
     );
 
     return true;

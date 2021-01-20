@@ -1,13 +1,17 @@
 type NoticeBoard {
- _id: ID!
  type: String!
+ detailType: String!
+ _id: ID!
  title: String!
  description: String!
- #  author: [User!]!
  createdAt: String!
  isDelete: Boolean!
  deletedAt: String!
  hit: Int!
+ recommendation: Int!
+ imgPath: String!
+ author: String!
+ recomUser: [String!]!
 }
 
 type User {
@@ -71,6 +75,7 @@ type SoprtsBoard {
 }
 
 type HobbyBoard {
+ type: String!
  _id: ID!
  title: String!
  description: String!
@@ -78,7 +83,10 @@ type HobbyBoard {
  isDelete: Boolean!
  deletedAt: String!
  hit: Int!
+ recommendation: Int!
  imgPath: String!
+ author: String!
+ recomUser: [String!]!
 }
 
 type GameBoard {
@@ -92,9 +100,40 @@ type GameBoard {
  imgPath: String!
  recommendation: Int!
  author: String!
+ recomUser: [String!]!
 }
 
 type MovieBoard {
+ type: String!
+ _id: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ recommendation: Int!
+ imgPath: String!
+ author: String!
+ recomUser: [String!]!
+}
+
+type PhotoBoard {
+ type: String!
+ _id: ID!
+ title: String!
+ description: String!
+ createdAt: String!
+ isDelete: Boolean!
+ deletedAt: String!
+ hit: Int!
+ recommendation: Int!
+ imgPath: [String!]!
+ author: String!
+ recomUser: [String!]!
+}
+
+type JoinBoard {
  type: String!
  _id: ID!
  title: String!

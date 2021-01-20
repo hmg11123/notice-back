@@ -3,6 +3,10 @@ const Schema = mongoose.Schema;
 
 const HobbyBoard = new Schema(
  {
+  type: {
+   type: String,
+   required: true,
+  },
   title: {
    type: String,
    required: true,
@@ -23,16 +27,33 @@ const HobbyBoard = new Schema(
    type: String,
    required: true,
   },
+  author: {
+   type: String,
+   required: true,
+  },
   hit: {
    type: Number,
    required: true,
   },
+  recommendation: {
+   type: Number,
+   required: true,
+  },
+  recomUser: [
+   {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: "User",
+   },
+  ],
   imgPath: {
    type: String,
    required: true,
+   default: "-",
   },
  },
- { versionKey: false }
+ {
+  versionKey: false,
+ }
 );
 
 export default mongoose.model(`HobbyBoard`, HobbyBoard, `HobbyBoard`);

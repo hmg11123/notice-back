@@ -4,8 +4,24 @@ type Query {
   limit: Int!
   currentPage: Int
  ): [NoticeBoard!]!
+ getNoticeTotalPage(searchValue: String!, limit: Int!): Int!
+ getNotice(id: String!): NoticeBoard!
+ getAllNoticelength(searchValue: String!): Int!
 }
 
-# type Mutation {
-#     createNotice(): Boolean!
-# }
+type Mutation {
+ createNotice(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deleteNotice(id: String!): Boolean!
+ updateNotice(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
+ noticeRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
+}

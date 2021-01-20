@@ -3,5 +3,25 @@ type Query {
   searchValue: String!
   limit: Int!
   currentPage: Int
- ): [SoprtsBoard!]!
+ ): [HobbyBoard!]!
+ getHobbyTotalPage(searchValue: String!, limit: Int!): Int!
+ getHobby(id: String!): HobbyBoard!
+ getAllHobbylength(searchValue: String!): Int!
+}
+
+type Mutation {
+ createHobby(
+  title: String!
+  author: String!
+  description: String!
+  imgPath: String
+ ): Boolean!
+ deleteHobby(id: String!): Boolean!
+ updateHobby(
+  id: String!
+  title: String!
+  description: String!
+  imgPath: String!
+ ): Boolean!
+ hobbyRecomUp(id: String!, recomUser: String!, recommendation: Int!): Boolean!
 }
