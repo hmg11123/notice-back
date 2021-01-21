@@ -11,6 +11,7 @@ type Mutation {
   author: String!
   description: String!
   imgPath: String
+  detailAuthor: String!
  ): Boolean!
  deleteGameBaord(id: String!): Boolean!
  updateGameBoard(

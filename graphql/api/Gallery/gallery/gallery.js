@@ -74,7 +74,7 @@ export default {
 
  Mutation: {
   createGallery: async (_, args) => {
-   const { title, author, description, imgPath, type } = args;
+   const { title, author, description, imgPath, detailAuthor } = args;
    const current = await CURRENT_TIME();
    try {
     const result = await Gallery.create({
@@ -88,6 +88,7 @@ export default {
      recommendation: 0,
      isDelete: false,
      deletedAt: `none`,
+     detailAuthor,
     });
 
     return true;

@@ -15,6 +15,7 @@ type Mutation {
   author: String!
   description: String!
   imgPath: String
+  detailAuthor: String!
  ): Boolean!
  deleteNotice(id: String!): Boolean!
  updateNotice(

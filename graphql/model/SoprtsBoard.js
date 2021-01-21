@@ -31,6 +31,10 @@ const SoprtsBoard = new Schema(
    type: String,
    required: true,
   },
+  detailAuthor: {
+   type: String,
+   required: true,
+  },
   hit: {
    type: Number,
    required: true,

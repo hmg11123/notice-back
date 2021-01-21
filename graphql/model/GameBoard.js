@@ -36,6 +36,10 @@ const GameBoard = new Schema(
    type: String,
    required: true,
   },
+  detailAuthor: {
+   type: String,
+   required: true,
+  },
   recommendation: {
    type: Number,
    required: true,

@@ -32,6 +32,10 @@ const PhotoBoard = new Schema(
    type: String,
    required: true,
   },
+  detailAuthor: {
+   type: String,
+   required: true,
+  },
   hit: {
    type: Number,
    required: true,
@@ -46,13 +50,11 @@ const PhotoBoard = new Schema(
     ref: "User",
    },
   ],
-  imgPath: [
-   {
-    type: String,
-    required: true,
-    default: "-",
-   },
-  ],
+  imgPath: {
+   type: String,
+   required: true,
+   default: "-",
+  },
  },
  {
   versionKey: false,

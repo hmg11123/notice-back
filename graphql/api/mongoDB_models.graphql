@@ -57,6 +57,7 @@ type Gallery {
  imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }
 
 type SoprtsBoard {
@@ -72,6 +73,7 @@ type SoprtsBoard {
  imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }
 
 type HobbyBoard {
@@ -87,9 +89,11 @@ type HobbyBoard {
  imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }
 
 type GameBoard {
+ type: String!
  _id: ID!
  title: String!
  description: String!
@@ -97,10 +101,11 @@ type GameBoard {
  isDelete: Boolean!
  deletedAt: String!
  hit: Int!
- imgPath: String!
  recommendation: Int!
+ imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }
 
 type MovieBoard {
@@ -116,6 +121,7 @@ type MovieBoard {
  imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }
 
 type PhotoBoard {
@@ -128,9 +134,10 @@ type PhotoBoard {
  deletedAt: String!
  hit: Int!
  recommendation: Int!
- imgPath: [String!]!
+ imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }
 
 type JoinBoard {
@@ -143,7 +150,7 @@ type JoinBoard {
  deletedAt: String!
  hit: Int!
  recommendation: Int!
- imgPath: String!
  author: String!
  recomUser: [String!]!
+ detailAuthor: String!
 }

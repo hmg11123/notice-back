@@ -74,7 +74,7 @@ export default {
 
  Mutation: {
   createJoin: async (_, args) => {
-   const { title, author, description, imgPath, type } = args;
+   const { title, author, description, detailAuthor } = args;
    const current = await CURRENT_TIME();
    try {
     const result = await JoinBoard.create({
@@ -83,11 +83,11 @@ export default {
      author,
      description,
      createdAt: current,
-     imgPath,
      hit: 0,
      recommendation: 0,
      isDelete: false,
      deletedAt: `none`,
+     detailAuthor,
     });
 
     return true;
@@ -114,11 +114,11 @@ export default {
    }
   },
   updateJoin: async (_, args) => {
-   const { id, title, description, imgPath } = args;
+   const { id, title, description } = args;
    try {
     const result = await JoinBoard.updateOne(
      { _id: id },
-     { $set: { title, description, imgPath } }
+     { $set: { title, description } }
     );
 
     return true;
